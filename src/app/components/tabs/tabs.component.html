@@ -1,0 +1,20 @@
+<div class="tabs is-toggle is-centered is-medium mt-4">
+  <ul>
+    <ng-template [ngIf]="tab == 'animais'">
+      <li class="is-active">
+        <a>Animais</a>
+      </li>
+      <li>
+        <a routerLink="/especies">Espécies</a>
+      </li>
+    </ng-template>
+    <ng-template [ngIf]="tab == 'especies'">
+      <li>
+        <a routerLink="/animais">Animais</a>
+      </li>
+      <li class="is-active">
+        <a>Espécies</a>
+      </li>
+    </ng-template>
+  </ul>
+</div>

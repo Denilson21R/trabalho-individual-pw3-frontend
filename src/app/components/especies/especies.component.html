@@ -1,0 +1,24 @@
+<app-tabs tab="especies"></app-tabs>
+<div class="container mt-5 main">
+  <h1 class="title">Espécies</h1>
+  <table class="table is-bordered is-striped">
+    <thead>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let especie of especies">
+        <td>{{especie.nome}}</td>
+        <td>{{especie.descricao}}</td>
+        <td>{{especie.status | titlecase}}</td>
+        <td class="acoes">
+          <button class="button is-link">Editar</button>
+          <button class="button is-danger">Excluir</button>
+          <button class="button is-info">Detalhar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
