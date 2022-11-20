@@ -1,0 +1,47 @@
+<div id="modal-js-example" [ngClass]="{'modal': true, 'is-active':modal}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Detalhar Animal</p>
+      <button class="delete" aria-label="close" (click)="closeModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <ng-template [ngIf]="animal">
+        <div class="field">
+          <label class="label">Nome do Animal</label>
+          <input type="text" class="input is-info" [value]="animal.nome" readonly>
+        </div>
+        <div class="field">
+          <label class="label">Nome do Dono</label>
+          <input type="text" class="input is-info" [value]="animal.nome_dono" readonly>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label">Espécie</label>
+              <input type="text" class="input is-info" [value]="animal.especie.nome" readonly>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label">Tamanho</label>
+              <input type="text" class="input is-info" [value]="animal.tamanho" readonly>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Descrição</label>
+          <textarea type="text" class="input is-info" readonly>{{animal.descricao}}</textarea>
+        </div>
+
+        <div class="field">
+          <label class="label">Observação</label>
+          <textarea type="text" class="input is-info" readonly>{{animal.observacao}}</textarea>
+        </div>
+      </ng-template>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button" (click)="closeModal()">Fechar</button>
+    </footer>
+  </div>
+</div>

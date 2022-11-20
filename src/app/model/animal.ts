@@ -6,6 +6,6 @@ export class Animal {
   especie!: Especie
   tamanho!: string
   descricao!: string
-  dono!: string
+  nome_dono!: string
   observacao?: string
 }

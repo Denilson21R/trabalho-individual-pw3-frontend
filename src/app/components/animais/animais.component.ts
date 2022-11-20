@@ -9,6 +9,8 @@ import {Animal} from "../../model/animal";
 })
 export class AnimaisComponent implements OnInit {
   animals!: Animal[]
+  modalDetalhar: boolean = false
+  animalDetalhar!: Animal;
 
   constructor(private web: WebService) { }
 
@@ -17,9 +19,31 @@ export class AnimaisComponent implements OnInit {
       if(res.ok){
         this.animals = res.body!
       }else{
-
+        //TODO: show error
       }
     })
   }
 
+  deletaAnimal(animalDelete: Animal) {
+    this.web.deletaAnimal(animalDelete).subscribe((res)=>{
+      if(res.ok){
+        this.removeAnimalByArrayIndex(animalDelete);
+        //TODO: show success
+      }else{
+        //TODO: show error
+      }
+    })
+  }
+
+  private removeAnimalByArrayIndex(animalDelete: Animal) {
+    let index = this.animals.indexOf(animalDelete)
+    if (index > -1) {
+      this.animals.splice(index, 1)
+    }
+  }
+
+  detalharAnimal(animal: Animal) {
+    this.modalDetalhar = true
+    this.animalDetalhar = animal
+  }
 }

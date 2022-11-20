@@ -7,15 +7,19 @@ import {Especie} from "./model/especie";
   providedIn: 'root'
 })
 export class WebService {
-  baseURL: string = "http://localhost:8080"
+  baseURL: string = "http://localhost:8080/api"
 
   constructor(private http: HttpClient) { }
 
   getAllAnimals(){
-    return this.http.get<Animal[]>(this.baseURL+"/api/animals", {observe: "response"})
+    return this.http.get<Animal[]>(this.baseURL+"/animals", {observe: "response"})
   }
 
   getAllEspecies(){
-    return this.http.get<Especie[]>(this.baseURL+"/api/especies", {observe: "response"})
+    return this.http.get<Especie[]>(this.baseURL+"/especies", {observe: "response"})
+  }
+
+  deletaAnimal(animal: Animal) {
+    return this.http.delete<Animal>(this.baseURL+"/animal/"+animal.id, {observe: "response"})
   }
 }

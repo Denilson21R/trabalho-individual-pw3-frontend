@@ -7,13 +7,15 @@ import { AnimaisComponent } from './components/animais/animais.component';
 import { EspeciesComponent } from './components/especies/especies.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import {HttpClientModule} from "@angular/common/http";
+import { ModalDetalharAnimalComponent } from './components/modal-detalhar-animal/modal-detalhar-animal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AnimaisComponent,
     EspeciesComponent,
-    TabsComponent
+    TabsComponent,
+    ModalDetalharAnimalComponent
   ],
   imports: [
     BrowserModule,

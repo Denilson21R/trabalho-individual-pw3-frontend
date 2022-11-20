@@ -17,10 +17,12 @@
         <td>{{animal.descricao}}</td>
         <td class="acoes">
           <button class="button is-link">Editar</button>
-          <button class="button is-danger">Excluir</button>
-          <button class="button is-info">Detalhar</button>
+          <button class="button is-danger" (click)="deletaAnimal(animal)">Excluir</button>
+          <button class="button is-info" (click)="detalharAnimal(animal)">Detalhar</button>
         </td>
       </tr>
     </tbody>
   </table>
+  <app-modal-detalhar-animal [modal]="modalDetalhar" [animal]="animalDetalhar" (emitCloseModalDetalhar)="modalDetalhar = false"></app-modal-detalhar-animal>
 </div>
+
