@@ -10,7 +10,10 @@ import {Animal} from "../../model/animal";
 export class AnimaisComponent implements OnInit {
   animals!: Animal[]
   modalDetalhar: boolean = false
-  animalDetalhar!: Animal;
+  modalEditar: boolean = false
+  animalDetalhar!: Animal
+  animalEditar!: Animal
+  modalAdicionar!: boolean
 
   constructor(private web: WebService) { }
 
@@ -45,5 +48,14 @@ export class AnimaisComponent implements OnInit {
   detalharAnimal(animal: Animal) {
     this.modalDetalhar = true
     this.animalDetalhar = animal
+  }
+
+  editarAnimal(animal: Animal){
+    this.modalEditar = true
+    this.animalEditar = animal
+  }
+
+  adicionarAnimal(){
+    this.modalAdicionar = true
   }
 }

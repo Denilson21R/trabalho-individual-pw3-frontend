@@ -1,6 +1,13 @@
 <app-tabs tab="especies"></app-tabs>
 <div class="container mt-5 main">
-  <h1 class="title">Espécies</h1>
+  <div class="columns">
+    <div class="column">
+      <h1 class="title">Espécies</h1>
+    </div>
+    <div class="column btn-novo">
+      <button class="button is-info" (click)="adicionarEspecie()">Nova Espécie</button>
+    </div>
+  </div>
   <table class="table is-bordered is-striped">
     <thead>
       <th>Nome</th>
@@ -14,9 +21,11 @@
         <td>{{especie.descricao}}</td>
         <td>{{especie.status | titlecase}}</td>
         <td class="acoes">
-          <button class="button is-link">Editar</button>
+          <button class="button is-link" (click)="editarEspecie(especie)">Editar</button>
         </td>
       </tr>
     </tbody>
   </table>
+  <app-modal-editar-especie [modal]="modalEditar" [especie]="especieEditar" (emitCloseModalEditar)="modalEditar = false"></app-modal-editar-especie>
+  <app-modal-adicionar-especie (emitCloseModalEditar)="modalAdicionar = false" [modal]="modalAdicionar"></app-modal-adicionar-especie>
 </div>

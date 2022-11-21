@@ -8,6 +8,10 @@ import { EspeciesComponent } from './components/especies/especies.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ModalDetalharAnimalComponent } from './components/modal-detalhar-animal/modal-detalhar-animal.component';
+import { ModalAdicionarAnimalComponent } from './components/modal-adicionar-animal/modal-adicionar-animal.component';
+import { ModalAdicionarEspecieComponent } from './components/modal-adicionar-especie/modal-adicionar-especie.component';
+import { ModalEditarAnimalComponent } from './components/modal-editar-animal/modal-editar-animal.component';
+import { ModalEditarEspecieComponent } from './components/modal-editar-especie/modal-editar-especie.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { ModalDetalharAnimalComponent } from './components/modal-detalhar-animal
     AnimaisComponent,
     EspeciesComponent,
     TabsComponent,
-    ModalDetalharAnimalComponent
+    ModalDetalharAnimalComponent,
+    ModalAdicionarAnimalComponent,
+    ModalAdicionarEspecieComponent,
+    ModalEditarAnimalComponent,
+    ModalEditarEspecieComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,9 @@ import {Especie} from "../../model/especie";
 })
 export class EspeciesComponent implements OnInit {
   especies! :Especie[]
+  modalEditar: boolean = false
+  especieEditar!: Especie
+  modalAdicionar!: boolean
 
   constructor(private web: WebService) { }
 
@@ -17,9 +20,17 @@ export class EspeciesComponent implements OnInit {
       if(res.ok){
         this.especies = res.body!
       }else{
-
+        //TODO: show error
       }
     })
   }
 
+  editarEspecie(especie: Especie){
+    this.modalEditar = true
+    this.especieEditar = especie
+  }
+
+  adicionarEspecie() {
+    this.modalAdicionar = true
+  }
 }

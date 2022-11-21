@@ -1,6 +1,13 @@
 <app-tabs tab="animais"></app-tabs>
 <div class="container mt-5 main">
-  <h1 class="title">Animais</h1>
+  <div class="columns">
+    <div class="column">
+      <h1 class="title">Animais</h1>
+    </div>
+    <div class="column btn-novo">
+      <button class="button is-info" (click)="adicionarAnimal()">Novo Animal</button>
+    </div>
+  </div>
   <table class="table is-bordered is-striped">
     <thead>
       <th>Nome</th>
@@ -16,13 +23,15 @@
         <td>{{animal.tamanho | titlecase}}</td>
         <td>{{animal.descricao}}</td>
         <td class="acoes">
-          <button class="button is-link">Editar</button>
+          <button class="button is-link" (click)="editarAnimal(animal)">Editar</button>
           <button class="button is-danger" (click)="deletaAnimal(animal)">Excluir</button>
-          <button class="button is-info" (click)="detalharAnimal(animal)">Detalhar</button>
+          <button class="button is-success" (click)="detalharAnimal(animal)">Detalhar</button>
         </td>
       </tr>
     </tbody>
   </table>
   <app-modal-detalhar-animal [modal]="modalDetalhar" [animal]="animalDetalhar" (emitCloseModalDetalhar)="modalDetalhar = false"></app-modal-detalhar-animal>
+  <app-modal-editar-animal [modal]="modalEditar" [animal]="animalEditar" (emitCloseModalEditar)="modalEditar = false"></app-modal-editar-animal>
+  <app-modal-adicionar-animal [modal]="modalAdicionar" (emitCloseModalEditar)="modalAdicionar = false"></app-modal-adicionar-animal>
 </div>
 

@@ -1,0 +1,16 @@
+<div id="modal-js-example" [ngClass]="{'modal': true, 'is-active':modal}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Adicionar Animal</p>
+      <button class="delete" aria-label="close" (click)="closeModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      Adicionar Animal
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-link">Salvar</button>
+      <button class="button" (click)="closeModal()">Fechar</button>
+    </footer>
+  </div>
+</div>
