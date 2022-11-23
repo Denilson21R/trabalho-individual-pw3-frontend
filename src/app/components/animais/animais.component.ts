@@ -9,11 +9,18 @@ import {Animal} from "../../model/animal";
 })
 export class AnimaisComponent implements OnInit {
   animals!: Animal[]
-  modalDetalhar: boolean = false
-  modalEditar: boolean = false
   animalDetalhar!: Animal
   animalEditar!: Animal
+
+  modalDetalhar: boolean = false
+  modalEditar: boolean = false
   modalAdicionar!: boolean
+  alertErroDeletar: boolean = false
+  alertSucessoDeletar: boolean = false
+  alertErroAdicionar: boolean = false;
+  alertSucessoAdicionar: boolean = false;
+  alertSucessoAtualizar: boolean = false;
+  alertErroAtualizar: boolean = false;
 
   constructor(private web: WebService) { }
 
@@ -25,8 +32,6 @@ export class AnimaisComponent implements OnInit {
     this.web.getAllAnimals().subscribe((res) => {
       if (res.ok) {
         this.animals = res.body!
-      } else {
-        //TODO: show error
       }
     })
   }
@@ -35,9 +40,7 @@ export class AnimaisComponent implements OnInit {
     this.web.deletaAnimal(animalDelete).subscribe((res)=>{
       if(res.ok){
         this.removeAnimalByArrayIndex(animalDelete);
-        //TODO: show success
-      }else{
-        //TODO: show error
+        this.alertSucessoDeletar = true
       }
     })
   }

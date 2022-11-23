@@ -45,7 +45,9 @@ export class WebService {
     animalData = animalData.set("nome", animal.nome)
     animalData = animalData.set("descricao", animal.descricao)
     animalData = animalData.set("tamanho", this.converterParaIndexTamanho(animal.tamanho))
-    animalData = animalData.set("observacao", String(animal.observacao))
+    if(animal.observacao != null){
+      animalData = animalData.set("observacao", String(animal.observacao))
+    }
     animalData = animalData.set("dono", animal.nome_dono)
     animalData = animalData.set("especie", String(animal.especie.id))
     return this.http.post<Animal>(this.baseURL+"/animal", animalData, {observe: "response"})

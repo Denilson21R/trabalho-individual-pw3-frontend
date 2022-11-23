@@ -13,6 +13,8 @@ export class ModalEditarAnimalComponent implements OnInit {
   @Input() animal!: Animal
   @Output() emitCloseModalEditar = new EventEmitter<boolean>();
   @Output() emitUpdateAnimals = new EventEmitter<boolean>();
+  @Output() emitAlertSucessoAtualizar = new EventEmitter<boolean>();
+  @Output() emitAlertErroAtualizar = new EventEmitter<boolean>();
 
   constructor(private web: WebService) { }
 
@@ -29,14 +31,12 @@ export class ModalEditarAnimalComponent implements OnInit {
       this.web.updateAnimal(this.animal).subscribe((res)=>{
         if(res.ok){
           this.emitUpdateAnimals.emit(true)
-          //TODO: show success
+          this.emitAlertSucessoAtualizar.emit(true)
         }else{
-          //TODO: show error
+          this.emitAlertErroAtualizar.emit(true)
         }
         this.closeModal()
       })
-    }else{
-      //TODO: show error
     }
   }
 }

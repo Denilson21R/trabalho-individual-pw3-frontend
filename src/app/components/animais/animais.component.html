@@ -30,8 +30,49 @@
       </tr>
     </tbody>
   </table>
+
+  <!-- modais -->
   <app-modal-detalhar-animal [modal]="modalDetalhar" [animal]="animalDetalhar" (emitCloseModalDetalhar)="modalDetalhar = false"></app-modal-detalhar-animal>
-  <app-modal-editar-animal [modal]="modalEditar" [animal]="animalEditar" (emitCloseModalEditar)="modalEditar = false" (emitUpdateAnimals)="updateAnimals()"></app-modal-editar-animal>
-  <app-modal-adicionar-animal [modal]="modalAdicionar" (emitCloseModalEditar)="modalAdicionar = false" (emitUpdateAnimals)="updateAnimals()"></app-modal-adicionar-animal>
+  <app-modal-editar-animal
+    [modal]="modalEditar"
+    [animal]="animalEditar"
+    (emitCloseModalEditar)="modalEditar = false"
+    (emitUpdateAnimals)="updateAnimals()"
+    (emitAlertSucessoAtualizar)="alertSucessoAtualizar = true"
+    (emitAlertErroAtualizar)="alertErroAtualizar = true"></app-modal-editar-animal>
+  <app-modal-adicionar-animal
+    [modal]="modalAdicionar"
+    (emitCloseModalEditar)="modalAdicionar = false"
+    (emitUpdateAnimals)="updateAnimals()"
+    (emitErroAdicionar)="alertErroAdicionar = true"
+    (emitSucessoAdicionar)="alertSucessoAdicionar = true"></app-modal-adicionar-animal>
+  <!-- final modais -->
+
+  <!-- alerts -->
+  <div class="notification is-danger" *ngIf="alertErroDeletar">
+    <button class="delete" (click)="alertErroDeletar = false"></button>
+    Ocorreu um erro ao deletar o animal.
+  </div>
+  <div class="notification is-success mr-6" *ngIf="alertSucessoDeletar">
+    <button class="delete" (click)="alertSucessoDeletar = false"></button>
+    Animal deletado com sucesso.
+  </div>
+  <div class="notification is-danger" *ngIf="alertErroAdicionar">
+    <button class="delete" (click)="alertErroAdicionar = false"></button>
+    Ocorreu um erro ao adiconar o animal.
+  </div>
+  <div class="notification is-success mr-6" *ngIf="alertSucessoAdicionar">
+    <button class="delete" (click)="alertSucessoAdicionar = false"></button>
+    Animal adicionado com sucesso.
+  </div>
+  <div class="notification is-danger" *ngIf="alertErroAtualizar">
+    <button class="delete" (click)="alertErroAtualizar = false"></button>
+    Ocorreu um erro ao atualizar o animal.
+  </div>
+  <div class="notification is-success mr-6" *ngIf="alertSucessoAtualizar">
+    <button class="delete" (click)="alertSucessoAtualizar = false"></button>
+    Animal atualizado com sucesso.
+  </div>
+  <!-- final alerts -->
 </div>
 

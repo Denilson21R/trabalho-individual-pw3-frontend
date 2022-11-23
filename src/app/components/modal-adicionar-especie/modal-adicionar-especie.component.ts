@@ -9,10 +9,13 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./modal-adicionar-especie.component.scss']
 })
 export class ModalAdicionarEspecieComponent implements OnInit {
+  especie: Especie = new Especie()
   @Input() modal!: boolean
   @Output() emitCloseModalEditar = new EventEmitter<boolean>();
   @Output() emitUpdateEspecies = new EventEmitter<boolean>();
-  especie: Especie = new Especie()
+  @Output() emitAlertSucessoAdicionar = new EventEmitter<boolean>();
+  @Output() emitAlertErroAdicionar = new EventEmitter<boolean>();
+
 
   constructor(private web: WebService) { }
 
@@ -30,13 +33,12 @@ export class ModalAdicionarEspecieComponent implements OnInit {
       this.web.saveEspecie(this.especie).subscribe((res)=>{
         if(res.ok){
           this.emitUpdateEspecies.emit(true)
+          this.emitAlertSucessoAdicionar.emit(true)
         }else{
-          //TODO: show error
+          this.emitAlertErroAdicionar.emit(true)
         }
         this.closeModal()
       })
-    }else{
-      //TODO: show error
     }
   }
 }

@@ -26,13 +26,38 @@
       </tr>
     </tbody>
   </table>
+  <!--modais -->
   <app-modal-editar-especie
     [modal]="modalEditar"
     [especie]="especieEditar"
     (emitCloseModalEditar)="modalEditar = false"
-    (emitUpdateEspecie)="updateEspecies()"></app-modal-editar-especie>
+    (emitUpdateEspecie)="updateEspecies()"
+    (emitAlertSucessoAtualizar)="alertSucessoAtualizar = true"
+    (emitAlertErroAtualizar)="alertErroAtualizar = true"></app-modal-editar-especie>
   <app-modal-adicionar-especie
     (emitCloseModalEditar)="modalAdicionar = false"
     [modal]="modalAdicionar"
-    (emitUpdateEspecies)="updateEspecies()"></app-modal-adicionar-especie>
+    (emitUpdateEspecies)="updateEspecies()"
+    (emitAlertSucessoAdicionar)="alertSucessoAdicionar = true"
+    (emitAlertErroAdicionar)="alertErroAdicionar = true"></app-modal-adicionar-especie>
+  <!--final modais -->
+
+  <!-- alerts -->
+  <div class="notification is-danger" *ngIf="alertErroAdicionar">
+    <button class="delete" (click)="alertErroAdicionar = false"></button>
+    Ocorreu um erro ao salvar a espécie.
+  </div>
+  <div class="notification is-success mr-6" *ngIf="alertSucessoAdicionar">
+    <button class="delete" (click)="alertSucessoAdicionar = false"></button>
+    Espécie salva com sucesso.
+  </div>
+  <div class="notification is-danger" *ngIf="alertErroAtualizar">
+    <button class="delete" (click)="alertErroAtualizar = false"></button>
+    Ocorreu um erro ao atualizar a espécie.
+  </div>
+  <div class="notification is-success mr-6" *ngIf="alertSucessoAtualizar">
+    <button class="delete" (click)="alertSucessoAtualizar = false"></button>
+    Espécie atualizada com sucesso.
+  </div>
+  <!-- final alerts -->
 </div>

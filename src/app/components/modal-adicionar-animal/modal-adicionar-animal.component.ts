@@ -13,6 +13,8 @@ export class ModalAdicionarAnimalComponent implements OnInit {
   @Input() modal!: boolean
   @Output() emitCloseModalEditar = new EventEmitter<boolean>();
   @Output() emitUpdateAnimals = new EventEmitter<boolean>();
+  @Output() emitErroAdicionar = new EventEmitter<boolean>();
+  @Output() emitSucessoAdicionar = new EventEmitter<boolean>();
   animal: Animal = new Animal()
   especies: Especie[] = []
 
@@ -33,14 +35,12 @@ export class ModalAdicionarAnimalComponent implements OnInit {
       this.web.saveAnimal(this.animal).subscribe((res)=>{
         if(res.ok){
           this.emitUpdateAnimals.emit(true)
-          //TODO: show success
+          this.emitSucessoAdicionar.emit(true)
         }else{
-          //TODO: show error
+          this.emitErroAdicionar.emit(true)
         }
         this.closeModal()
       })
-    }else{
-      //TODO: show error
     }
   }
 
@@ -52,8 +52,6 @@ export class ModalAdicionarAnimalComponent implements OnInit {
             this.especies.push(especie)
           }
         })
-      } else {
-        //TODO: show error
       }
     })
   }

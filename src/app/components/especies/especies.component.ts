@@ -12,6 +12,10 @@ export class EspeciesComponent implements OnInit {
   modalEditar: boolean = false
   especieEditar!: Especie
   modalAdicionar!: boolean
+  alertErroAdicionar: boolean = false;
+  alertSucessoAdicionar: boolean = false;
+  alertSucessoAtualizar: boolean = false;
+  alertErroAtualizar: boolean = false;
 
   constructor(private web: WebService) { }
 
@@ -36,8 +40,6 @@ export class EspeciesComponent implements OnInit {
     this.web.getAllEspecies().subscribe((res) => {
       if (res.ok) {
         this.especies = res.body!
-      } else {
-        //TODO: show error
       }
     })
   }

@@ -36,7 +36,7 @@
 
         <div class="field">
           <label class="label">Observação</label>
-          <textarea type="text" class="input is-info" readonly>{{animal.observacao}}</textarea>
+          <textarea type="text" class="input is-info" readonly>{{animal.observacao == undefined ? "" : animal.observacao}}</textarea>
         </div>
       </ng-template>
     </section>
