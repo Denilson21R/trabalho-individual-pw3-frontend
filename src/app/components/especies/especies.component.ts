@@ -16,13 +16,7 @@ export class EspeciesComponent implements OnInit {
   constructor(private web: WebService) { }
 
   ngOnInit(): void {
-    this.web.getAllEspecies().subscribe((res)=>{
-      if(res.ok){
-        this.especies = res.body!
-      }else{
-        //TODO: show error
-      }
-    })
+    this.getEspecies();
   }
 
   editarEspecie(especie: Especie){
@@ -32,5 +26,19 @@ export class EspeciesComponent implements OnInit {
 
   adicionarEspecie() {
     this.modalAdicionar = true
+  }
+
+  updateEspecies() {
+    this.getEspecies();
+  }
+
+  private getEspecies() {
+    this.web.getAllEspecies().subscribe((res) => {
+      if (res.ok) {
+        this.especies = res.body!
+      } else {
+        //TODO: show error
+      }
+    })
   }
 }

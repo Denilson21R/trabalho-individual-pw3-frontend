@@ -12,6 +12,7 @@ import { ModalAdicionarAnimalComponent } from './components/modal-adicionar-anim
 import { ModalAdicionarEspecieComponent } from './components/modal-adicionar-especie/modal-adicionar-especie.component';
 import { ModalEditarAnimalComponent } from './components/modal-editar-animal/modal-editar-animal.component';
 import { ModalEditarEspecieComponent } from './components/modal-editar-especie/modal-editar-especie.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -25,11 +26,13 @@ import { ModalEditarEspecieComponent } from './components/modal-editar-especie/m
     ModalEditarAnimalComponent,
     ModalEditarEspecieComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

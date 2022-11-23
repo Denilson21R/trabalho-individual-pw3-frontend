@@ -20,7 +20,7 @@
       <tr *ngFor="let animal of animals">
         <td>{{animal.nome}}</td>
         <td>{{animal.especie.nome}}</td>
-        <td>{{animal.tamanho | titlecase}}</td>
+        <td>{{retirarUnderscore(animal.tamanho) | titlecase}}</td>
         <td>{{animal.descricao}}</td>
         <td class="acoes">
           <button class="button is-link" (click)="editarAnimal(animal)">Editar</button>
@@ -31,7 +31,7 @@
     </tbody>
   </table>
   <app-modal-detalhar-animal [modal]="modalDetalhar" [animal]="animalDetalhar" (emitCloseModalDetalhar)="modalDetalhar = false"></app-modal-detalhar-animal>
-  <app-modal-editar-animal [modal]="modalEditar" [animal]="animalEditar" (emitCloseModalEditar)="modalEditar = false"></app-modal-editar-animal>
+  <app-modal-editar-animal [modal]="modalEditar" [animal]="animalEditar" (emitCloseModalEditar)="modalEditar = false" (emitUpdateAnimals)="updateAnimals()"></app-modal-editar-animal>
   <app-modal-adicionar-animal [modal]="modalAdicionar" (emitCloseModalEditar)="modalAdicionar = false"></app-modal-adicionar-animal>
 </div>
 

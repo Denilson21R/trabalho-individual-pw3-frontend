@@ -1,17 +1,41 @@
 <div id="modal-js-example" [ngClass]="{'modal': true, 'is-active':modal}">
   <div class="modal-background"></div>
   <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Editar Animal</p>
-      <button class="delete" aria-label="close" (click)="closeModal()"></button>
-    </header>
-    <section class="modal-card-body">
-      <ng-template [ngIf]="animal">
-        {{animal | json}}
-      </ng-template>
-    </section>
-    <footer class="modal-card-foot">
-      <button class="button" (click)="closeModal()">Fechar</button>
-    </footer>
+    <form #salvarForm="ngForm" (submit)="salvarAnimal(salvarForm)">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Editar Animal</p>
+        <button class="delete" aria-label="close" (click)="closeModal()"></button>
+      </header>
+      <section class="modal-card-body">
+        <ng-template [ngIf]="animal != null">
+          <div class="field">
+            <label class="label">Nome do Animal</label>
+            <input type="text" name="nome" [(ngModel)]="animal.nome" class="input is-info" required>
+          </div>
+          <div class="field">
+            <label class="label">Tamanho</label>
+            <select type="text" class="input is-info" name="tamanho" [(ngModel)]="animal.tamanho" required>
+              <option [ngValue]="'MUITO_PEQUENO'" [selected]="animal.tamanho == 'MUITO_PEQUENO'">Muito Pequeno</option>
+              <option [ngValue]="'PEQUENO'" [selected]="animal.tamanho == 'PEQUENO'">Pequeno</option>
+              <option [ngValue]="'MEDIO'" [selected]="animal.tamanho == 'MEDIO'">Médio</option>
+              <option [ngValue]="'GRANDE'" [selected]="animal.tamanho == 'GRANDE'">Grande</option>
+              <option [ngValue]="'MUITO_GRANDE'" [selected]="animal.tamanho == 'MUITO_GRANDE'">Muito Grande</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="label">Descrição</label>
+            <textarea type="text" class="input is-info" name="descricao" [(ngModel)]="animal.descricao" required></textarea>
+          </div>
+          <div class="field">
+            <label class="label">Observação</label>
+            <textarea type="text" class="input is-info" name="observacao" [(ngModel)]="animal.observacao"></textarea>
+          </div>
+        </ng-template>
+      </section>
+      <footer class="modal-card-foot">
+        <button type="submit" class="button is-link">Salvar</button>
+        <button class="button" (click)="closeModal()">Fechar</button>
+      </footer>
+    </form>
   </div>
 </div>

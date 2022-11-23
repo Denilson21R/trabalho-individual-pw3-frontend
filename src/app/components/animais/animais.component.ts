@@ -18,10 +18,14 @@ export class AnimaisComponent implements OnInit {
   constructor(private web: WebService) { }
 
   ngOnInit(): void {
-    this.web.getAllAnimals().subscribe((res)=>{
-      if(res.ok){
+    this.getAnimals();
+  }
+
+  private getAnimals() {
+    this.web.getAllAnimals().subscribe((res) => {
+      if (res.ok) {
         this.animals = res.body!
-      }else{
+      } else {
         //TODO: show error
       }
     })
@@ -57,5 +61,13 @@ export class AnimaisComponent implements OnInit {
 
   adicionarAnimal(){
     this.modalAdicionar = true
+  }
+
+  updateAnimals() {
+    this.getAnimals();
+  }
+
+  retirarUnderscore(tamanho: string) {
+    return tamanho.replace("_", " ")
   }
 }

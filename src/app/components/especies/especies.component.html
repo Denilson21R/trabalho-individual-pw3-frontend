@@ -26,6 +26,6 @@
       </tr>
     </tbody>
   </table>
-  <app-modal-editar-especie [modal]="modalEditar" [especie]="especieEditar" (emitCloseModalEditar)="modalEditar = false"></app-modal-editar-especie>
+  <app-modal-editar-especie [modal]="modalEditar" [especie]="especieEditar" (emitCloseModalEditar)="modalEditar = false" (emitUpdateEspecie)="updateEspecies()"></app-modal-editar-especie>
   <app-modal-adicionar-especie (emitCloseModalEditar)="modalAdicionar = false" [modal]="modalAdicionar"></app-modal-adicionar-especie>
 </div>

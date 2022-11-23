@@ -1,17 +1,34 @@
 <div id="modal-js-example" [ngClass]="{'modal': true, 'is-active':modal}">
   <div class="modal-background"></div>
   <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Editar Espécie</p>
-      <button class="delete" aria-label="close" (click)="closeModal()"></button>
-    </header>
-    <section class="modal-card-body">
-      <ng-template [ngIf]="especie">
-        {{especie | json}}
-      </ng-template>
-    </section>
-    <footer class="modal-card-foot">
-      <button class="button" (click)="closeModal()">Fechar</button>
-    </footer>
+    <form #salvarForm="ngForm" (submit)="salvarEspecie(salvarForm)">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Editar Espécie</p>
+        <button class="delete" aria-label="close" (click)="closeModal()"></button>
+      </header>
+      <section class="modal-card-body">
+        <ng-template [ngIf]="especie != null">
+          <div class="field">
+            <label class="label">Nome da Espécie</label>
+            <input type="text" name="nome" [(ngModel)]="especie.nome" class="input is-info" required>
+          </div>
+            <div class="field">
+              <label class="label">Status</label>
+              <select type="text" class="input is-info" name="status" [(ngModel)]="especie.status" required>
+                <option [ngValue]="'ATIVO'" [selected]="especie.status == 'ATIVO'">ATIVO</option>
+                <option [ngValue]="'INATIVO'" [selected]="especie.status == 'INATIVO'">INATIVO</option>
+              </select>
+            </div>
+          <div class="field">
+            <label class="label">Descrição</label>
+            <textarea type="text" class="input is-info" name="descricao" [(ngModel)]="especie.descricao" required></textarea>
+          </div>
+        </ng-template>
+      </section>
+      <footer class="modal-card-foot">
+        <button type="submit" class="button is-link">Salvar</button>
+        <button class="button" (click)="closeModal()">Fechar</button>
+      </footer>
+    </form>
   </div>
 </div>
