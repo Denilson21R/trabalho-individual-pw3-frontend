@@ -32,6 +32,6 @@
   </table>
   <app-modal-detalhar-animal [modal]="modalDetalhar" [animal]="animalDetalhar" (emitCloseModalDetalhar)="modalDetalhar = false"></app-modal-detalhar-animal>
   <app-modal-editar-animal [modal]="modalEditar" [animal]="animalEditar" (emitCloseModalEditar)="modalEditar = false" (emitUpdateAnimals)="updateAnimals()"></app-modal-editar-animal>
-  <app-modal-adicionar-animal [modal]="modalAdicionar" (emitCloseModalEditar)="modalAdicionar = false"></app-modal-adicionar-animal>
+  <app-modal-adicionar-animal [modal]="modalAdicionar" (emitCloseModalEditar)="modalAdicionar = false" (emitUpdateAnimals)="updateAnimals()"></app-modal-adicionar-animal>
 </div>
 

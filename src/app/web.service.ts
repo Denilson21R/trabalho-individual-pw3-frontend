@@ -40,6 +40,24 @@ export class WebService {
     return this.http.put<Especie>(this.baseURL+"/especie/"+especie.id, especieData, {observe: "response"})
   }
 
+  saveAnimal(animal: Animal){
+    let animalData = new HttpParams()
+    animalData = animalData.set("nome", animal.nome)
+    animalData = animalData.set("descricao", animal.descricao)
+    animalData = animalData.set("tamanho", this.converterParaIndexTamanho(animal.tamanho))
+    animalData = animalData.set("observacao", String(animal.observacao))
+    animalData = animalData.set("dono", animal.nome_dono)
+    animalData = animalData.set("especie", String(animal.especie.id))
+    return this.http.post<Animal>(this.baseURL+"/animal", animalData, {observe: "response"})
+  }
+
+  saveEspecie(especie: Especie) {
+    let especieData = new HttpParams()
+    especieData = especieData.set("nome", especie.nome)
+    especieData = especieData.set("descricao", especie.descricao)
+    return this.http.post<Especie>(this.baseURL+"/especie", especieData, {observe: "response"})
+  }
+
   private converterParaIndexStatus(status: string) {
     if(status == "INATIVO"){
       return "1"

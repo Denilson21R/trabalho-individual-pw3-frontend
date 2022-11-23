@@ -29,6 +29,7 @@ export class ModalEditarAnimalComponent implements OnInit {
       this.web.updateAnimal(this.animal).subscribe((res)=>{
         if(res.ok){
           this.emitUpdateAnimals.emit(true)
+          //TODO: show success
         }else{
           //TODO: show error
         }

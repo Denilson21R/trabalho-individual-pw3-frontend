@@ -1,4 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Especie} from "../../model/especie";
+import {WebService} from "../../web.service";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-modal-adicionar-especie',
@@ -8,8 +11,10 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class ModalAdicionarEspecieComponent implements OnInit {
   @Input() modal!: boolean
   @Output() emitCloseModalEditar = new EventEmitter<boolean>();
+  @Output() emitUpdateEspecies = new EventEmitter<boolean>();
+  especie: Especie = new Especie()
 
-  constructor() { }
+  constructor(private web: WebService) { }
 
   ngOnInit(): void {
   }
@@ -17,5 +22,21 @@ export class ModalAdicionarEspecieComponent implements OnInit {
   closeModal() {
     this.modal = false
     this.emitCloseModalEditar.emit(true)
+    this.especie = new Especie()
+  }
+
+  salvarEspecie(form: NgForm) {
+    if(form.valid){
+      this.web.saveEspecie(this.especie).subscribe((res)=>{
+        if(res.ok){
+          this.emitUpdateEspecies.emit(true)
+        }else{
+          //TODO: show error
+        }
+        this.closeModal()
+      })
+    }else{
+      //TODO: show error
+    }
   }
 }

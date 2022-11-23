@@ -1,16 +1,27 @@
 <div id="modal-js-example" [ngClass]="{'modal': true, 'is-active':modal}">
   <div class="modal-background"></div>
   <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Adicionar Espécie</p>
-      <button class="delete" aria-label="close" (click)="closeModal()"></button>
-    </header>
-    <section class="modal-card-body">
-      Adicionar Espécie
-    </section>
-    <footer class="modal-card-foot">
-      <button class="button is-link">Salvar</button>
-      <button class="button" (click)="closeModal()">Fechar</button>
-    </footer>
+    <form #salvarForm="ngForm" (submit)="salvarEspecie(salvarForm)">
+      <ng-template [ngIf]="especie != null">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Adicionar Espécie</p>
+          <button class="delete" aria-label="close" (click)="closeModal()"></button>
+        </header>
+        <section class="modal-card-body">
+          <div class="field">
+            <label class="label">Nome</label>
+            <input type="text" class="input is-info" name="nome" [(ngModel)]="especie.nome" required>
+          </div>
+          <div class="field">
+            <label class="label">Descrição</label>
+            <textarea type="text" class="input is-info" name="descricao" [(ngModel)]="especie.descricao" required></textarea>
+          </div>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-link">Salvar</button>
+          <button class="button" (click)="closeModal()">Fechar</button>
+        </footer>
+      </ng-template>
+    </form>
   </div>
 </div>
